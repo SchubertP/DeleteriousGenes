@@ -1,2 +1,23 @@
-# DeleteriousGenes
-Using f2xba, the modeling framework for extended genome-scale metabolic modeling, this repository contains Jupyter notebooks to determine deleterious genes for various types of genome-scale metabolic models of Escherichia coli (based on iML1515) and Saccharomyces cerevisiae (based on yeast-GEM version 9.1.0).
+# Deleterious Genes Analysis
+
+This work has been performed at the research group for [Computational Cell Biology
+(CCB)](https://www.cs.hhu.de/en/research-groups/computational-cell-biology)
+at Heinrich-Heine-University Düsseldorf, Germany.
+
+Genome-scale metabolic models of organisms are typically reconstructed with a focus on essential genes. Such models have been demonstrated to exhibit a relatively high degree of accuracy in predicting the essentiality of genes. However, when it comes to predicting the deleterious effects of single gene knockouts, the efficacy of these models is generally found to be inferior.
+
+An evaluation was conducted to ascertain the quality of predictions for deleterious growth defects in single-gene knockouts across a range of extended genome-scale models. The findings indicated that such models exhibited a substantially higher prediction quality, particularly in instances where deleterious gene effects were taken into account during the construction process. The utilization of such extended models holds the potential to enhance the precision of research and applications in the domain of biotechnology.
+
+A rigorous analysis of variants of genome-scale metabolic models of *Escherichia coli* and *Saccharomyces cerevisiae* has been conducted to ascertain the extent to which these models can predict deleterious growth effects caused by single gene knockouts. The model variants comprise modified FBA type models based on iML1515 ([Monk et al., 2017](https://doi.org/10.1038/nbt.3956)) and yeast-GEM version 9.1.0 ([Zhang et al., 2024](https://doi.org/10.1038/s44320-024-00060-7)), as well as enzyme constraint GECKO models ([Sanchez et al., 2017](https://doi.org/10.15252/msb.20167411)) and resource balance constraint RBA models ([Goelzer and Fromion, 2011](https://doi.org/10.1016/j.bbagen.2011.05.014)). Variants with detailed thermodynamic constraints ([Salvy et al., 2019](https://doi.org/10.1093/bioinformatics/bty499)) have also been analyzed.
+The FBA and GECKO models were also subjected to MOMA ([Segre et al., 2002](https://doi.org/10.1073/pnas.232349399)) and ROOM ([Shlomi et al., 2005](https://doi.org/10.1073/pnas.0406346102)) methods. The construction of the models was executed through the utilization of [f2xba](https://f2xba.readthedocs.io), which is a Python framework designed for the development of extended genome-scale metabolic models. The repository contains all the models that have been analyzed. These models are encoded in SBML ([Hucka et al., 2019](https://doi.org/10.1515/jib-2019-0021)). The construction of these models is described in other sources.
+
+This repository contains a collection of Jupyter notebooks that facilitate the reproduction of the presented results, accompanied by the relevant experimental data.
+
+The experiments performed for *E. coli* are based on the strains from the Keio collection. Genes have been classified as either essential and viable ([Baba et al., 2006](https://doi.org/10.1038/msb4100050)) and ([Yamamoto et al., 2009](https://doi.org/10.1038/msb.2009.92)). 
+The identification of deleterious genes has been achieved through the measurement of the growth effects of gene knockouts ([Takeuchi et al., 2014](https://doi.org/10.1186/1471-2180-14-171)). An alternative, noisier dataset ([Fuhrer et al., 2017](https://doi.org/10.15252/msb.20167150)) has been inspected; however, it has not been used for the final comparison with predictions. Simulation results are augmented with information from proteomics measurements ([Schmidt et al., 2016](https://doi.org/10.1038/nbt.3418)) and protein data derived from Uniprot ([UniProt_Consortium, 2025](https://doi.org/10.1093/nar/gkae1010)).
+
+Experiments for *S. cerevisiae* are based on the homozygous strains of the yeast knockout collection (YKO) ([Giaever et al., 2002](https://doi.org/10.1038/nature00935])). The list of essential and viable genes was obtained from BioCyc ([Karp et al., 2017](https://doi.org/10.1093/bib/bbx085)). The gene classification is predicated on experimental results ([Giaever and Nislow, 2014](https://doi.org/10.1534/genetics.114.161620)) and other databases ([Chen et al., 2012](https://doi.org/10.1093/nar/gkr986)). The concept of deleterious genes is predicated on a high-quality competitive fitness assay ([Deutschbauer et al., 2005](https://doi.org/10.1534/genetics.104.036871)). Simulation results are augmented with information from proteomics measurements ([Bjoerkeroth et al. 2020](https://doi.org/10.1073/pnas.1921890117)) and protein data derived from Uniprot.
+
+Model simulations were performed under Python 3.13, using f2xba (version 1.11.0) with Gurobi (version 13.0.3) as numerical solver.
+
+Peter Schubert, November 2026
